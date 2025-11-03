@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaCode } from 'react-icons/fa';
 
 const ProjectCard = ({ project, index }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -13,6 +19,8 @@ const ProjectCard = ({ project, index }) => {
         y: -10,
         boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)"
       }}
+      onClick={handleFlip}
+      animate={{ rotateY: isFlipped ? 180 : 0 }}
       className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-blue-400/50 transition-all duration-300 group"
     >
       {/* Project Image */}

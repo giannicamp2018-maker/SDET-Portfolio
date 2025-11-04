@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaCode, FaRunning, FaWater, FaSnowflake } from 'react-icons/fa';
 
+import SkillCard from './SkillCard';
+
 const About = () => {
   const hobbies = [
     { icon: FaRunning, name: 'Track & Field', color: 'text-blue-400' },

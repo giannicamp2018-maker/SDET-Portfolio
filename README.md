@@ -33,7 +33,6 @@ To get a local copy up and running, follow these simple steps.
 * [React](https://reactjs.org/)
 * [Vite](https://vitejs.dev/)
 * [Tailwind CSS](https://tailwindcss.com/)
-* [Framer Motion](https://www.framer.com/motion/)
 * [React Card Flip](https://www.npmjs.com/package/react-card-flip)
 
 ## Features

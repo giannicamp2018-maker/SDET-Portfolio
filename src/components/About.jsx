@@ -2,8 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaCode, FaRunning, FaWater, FaSnowflake } from 'react-icons/fa';
 
-import SkillCard from './SkillCard';
-
 const About = () => {
   const hobbies = [
     { icon: FaRunning, name: 'Track & Field', color: 'text-blue-400' },
@@ -17,9 +15,9 @@ const About = () => {
     { 
       name: 'Java', 
       description: 'Object-oriented programming language used for enterprise applications, Android development, and backend services.',
-      color: 'text-blue-500',
-      bgColor: 'bg-blue-500/20',
-      borderColor: 'border-blue-500/30'
+      color: 'text-orange-400',
+      bgColor: 'bg-orange-500/20',
+      borderColor: 'border-orange-400/30'
     },
     { 
       name: 'Python', 
@@ -174,13 +172,13 @@ const About = () => {
                         {/* Front of card */}
                         <div className="absolute inset-0 backface-hidden flex flex-col items-center justify-center p-4"
                              style={{
-                               backgroundColor: skill.name === 'Java' ? 'rgba(59, 130, 246, 0.2)' :
+                               backgroundColor: skill.name === 'Java' ? 'rgba(255, 165, 0, 0.2)' :
                                               skill.name === 'Python' ? 'rgba(59, 130, 246, 0.2)' :
                                               skill.name === 'JavaScript' ? 'rgba(251, 191, 36, 0.2)' :
                                               skill.name === 'HTML' ? 'rgba(239, 68, 68, 0.2)' :
                                               skill.name === 'CSS' ? 'rgba(147, 51, 234, 0.2)' :
                                               'rgba(34, 197, 94, 0.2)',
-                               border: `3px solid ${skill.name === 'Java' ? '#3b82f6' :
+                               border: `3px solid ${skill.name === 'Java' ? '#f97316' :
                                             skill.name === 'Python' ? '#3b82f6' :
                                             skill.name === 'JavaScript' ? '#fbbf24' :
                                             skill.name === 'HTML' ? '#ef4444' :
@@ -205,7 +203,7 @@ const About = () => {
                         </div>
                         
                         {/* Back of card */}
-                        <div className="absolute inset-0 backface-hidden transform rotateY-180 flex flex-col items-center justify-center p-6"
+                        <div className="absolute inset-0 backface-hidden rotate-y-180 flex items-center justify-center p-4"
                              style={{
                                backgroundColor: skill.name === 'Java' ? 'rgba(255, 165, 0, 0.2)' :
                                               skill.name === 'Python' ? 'rgba(59, 130, 246, 0.2)' :

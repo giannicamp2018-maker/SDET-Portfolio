@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaCode } from 'react-icons/fa';
 
 const ProjectCard = ({ project, index }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className={`relative bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-blue-400/50 transition-all duration-300 group`}
-    >
+      whileHover={{ 
+        boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)"
+      }}
+      onClick={handleFlip}
+        variants={{
+        front: { scaleX: 1, transition: { duration: 0.5 } },
+        back: { scaleX: -1, transition: { duration: 0.5 } }
+      }}
+      animate={isFlipped ? "back" : "front"}
+        
+        className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-blue-400/50 transition-all duration-300 group"    >
       {/* Project Image */}
       <div className="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden">
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />

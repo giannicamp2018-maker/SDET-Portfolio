@@ -1,20 +1,51 @@
-# React + Vite
+# SDET Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a personal portfolio website built with React and Vite, showcasing my skills and projects as a Software Development Engineer in Test (SDET).
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To get a local copy up and running, follow these simple steps.
 
-## React Compiler
+### Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/your_username_/Project-Name.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Run the development server
+   ```sh
+   npm run dev
+   ```
+
+## Technologies Used
+
+* [React](https://reactjs.org/)
+* [Vite](https://vitejs.dev/)
+* [Tailwind CSS](https://tailwindcss.com/)
+* [Framer Motion](https://www.framer.com/motion/)
+* [React Card Flip](https://www.npmjs.com/package/react-card-flip)
+
+## Features
+
+* **Responsive Design:** The portfolio is fully responsive and looks great on all devices.
+* **Interactive UI:** The UI is enhanced with animations and transitions using Framer Motion and React Card Flip.
+* **Project Showcase:** A dedicated section to showcase my projects with links to their repositories and live demos.
+* **Skills Section:** A section to highlight my technical skills.
+* **Contact Form:** A contact form to get in touch with me.
 
 ## Deployment
+
+The portfolio is deployed on Vercel and can be accessed at the following link:
 
 [Portfolio Deployment](https://portfolio-project-seven-rust.vercel.app/)

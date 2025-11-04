@@ -10,15 +10,16 @@ const About = () => {
     { icon: FaWater, name: 'Surfing', color: 'text-green-400' },
     { icon: FaSnowflake, name: 'Snowboarding', color: 'text-purple-400' },
     { icon: FaCode, name: 'Programming', color: 'text-pink-400' },
+    gubjk
   ];
 
   const skills = [
     { 
       name: 'Java', 
       description: 'Object-oriented programming language used for enterprise applications, Android development, and backend services.',
-      color: 'text-blue-500',
-      bgColor: 'bg-blue-500/20',
-      borderColor: 'border-blue-500/30'
+      color: 'text-orange-400',
+      bgColor: 'bg-orange-500/20',
+      borderColor: 'border-orange-400/30'
     },
     { 
       name: 'Python', 
@@ -126,10 +127,10 @@ const About = () => {
               <h3 className="text-2xl font-bold text-white mb-6">Hobbies & Interests</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {hobbies.map((hobby, index) => (
-                  <motion.div
-                    key={hobby.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    <motion.div
+                      key={hobby.name}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ 
@@ -152,7 +153,80 @@ const About = () => {
               <div className="relative">
                 <div className="flex overflow-x-auto gap-4 pb-4 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                   {skills.map((skill, index) => (
-                    <SkillCard key={skill.name} skill={skill} index={index} />
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ 
+                        scale: 0.95,
+                        transition: { duration: 0.1 }
+                      }}
+                      className="flex-shrink-0 perspective-1000 skill-card"
+                      style={{ width: '400px', height: '533px' }}
+                    >
+                      <div className="relative w-full h-full transform-style-preserve-3d transition-transform duration-500 cursor-pointer" 
+                           onClick={(e) => {
+                             const card = e.currentTarget;
+                             card.style.transform = card.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
+                           }}>
+                        {/* Front of card */}
+                        <div className="absolute inset-0 backface-hidden flex flex-col items-center justify-center p-4"
+                             style={{
+                               backgroundColor: skill.name === 'Java' ? 'rgba(255, 165, 0, 0.2)' :
+                                              skill.name === 'Python' ? 'rgba(59, 130, 246, 0.2)' :
+                                              skill.name === 'JavaScript' ? 'rgba(251, 191, 36, 0.2)' :
+                                              skill.name === 'HTML' ? 'rgba(239, 68, 68, 0.2)' :
+                                              skill.name === 'CSS' ? 'rgba(147, 51, 234, 0.2)' :
+                                              'rgba(34, 197, 94, 0.2)',
+                               border: `3px solid ${skill.name === 'Java' ? '#f97316' :
+                                            skill.name === 'Python' ? '#3b82f6' :
+                                            skill.name === 'JavaScript' ? '#fbbf24' :
+                                            skill.name === 'HTML' ? '#ef4444' :
+                                            skill.name === 'CSS' ? '#9333ea' :
+                                            '#22c55e'}`,
+                               borderRadius: '24px'
+                             }}>
+                          <div className="text-4xl font-bold mb-4"
+                               style={{
+                                 color: skill.name === 'Java' ? '#f97316' :
+                                        skill.name === 'Python' ? '#3b82f6' :
+                                        skill.name === 'JavaScript' ? '#fbbf24' :
+                                        skill.name === 'HTML' ? '#ef4444' :
+                                        skill.name === 'CSS' ? '#9333ea' :
+                                        '#22c55e'
+                               }}>
+                            {skill.name}
+                          </div>
+                          <div className="text-gray-300 text-lg text-center">
+                            Click to learn more
+                          </div>
+                        </div>
+                        
+                        {/* Back of card */}
+                        <div className="absolute inset-0 backface-hidden rotate-y-180 flex items-center justify-center p-4"
+                             style={{
+                               backgroundColor: skill.name === 'Java' ? 'rgba(255, 165, 0, 0.2)' :
+                                              skill.name === 'Python' ? 'rgba(59, 130, 246, 0.2)' :
+                                              skill.name === 'JavaScript' ? 'rgba(251, 191, 36, 0.2)' :
+                                              skill.name === 'HTML' ? 'rgba(239, 68, 68, 0.2)' :
+                                              skill.name === 'CSS' ? 'rgba(147, 51, 234, 0.2)' :
+                                              'rgba(34, 197, 94, 0.2)',
+                               border: `3px solid ${skill.name === 'Java' ? '#f97316' :
+                                            skill.name === 'Python' ? '#3b82f6' :
+                                            skill.name === 'JavaScript' ? '#fbbf24' :
+                                            skill.name === 'HTML' ? '#ef4444' :
+                                            skill.name === 'CSS' ? '#9333ea' :
+                                            '#22c55e'}`,
+                               borderRadius: '24px'
+                             }}>
+                          <p className="text-gray-300 text-lg text-center leading-relaxed">
+                            {skill.description}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
                   ))}
                 </div>
                 

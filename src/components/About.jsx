@@ -10,7 +10,6 @@ const About = () => {
     { icon: FaWater, name: 'Surfing', color: 'text-green-400' },
     { icon: FaSnowflake, name: 'Snowboarding', color: 'text-purple-400' },
     { icon: FaCode, name: 'Programming', color: 'text-pink-400' },
-    gubjk
   ];
 
   const skills = [

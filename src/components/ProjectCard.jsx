@@ -16,7 +16,6 @@ const ProjectCard = ({ project, index }) => {
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
       whileHover={{ 
-        y: -10,
         boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)"
       }}
       onClick={handleFlip}

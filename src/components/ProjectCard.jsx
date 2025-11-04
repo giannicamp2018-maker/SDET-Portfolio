@@ -20,9 +20,9 @@ const ProjectCard = ({ project, index }) => {
         boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)"
       }}
       onClick={handleFlip}
-      animate={{ rotateY: isFlipped ? 180 : 0 }}
-      className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-blue-400/50 transition-all duration-300 group"
-    >
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        style={{ perspective: 1000 }}
+        className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-blue-400/50 transition-all duration-300 group"    >
       {/* Project Image */}
       <div className="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden">
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />

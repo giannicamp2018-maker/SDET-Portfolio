@@ -48,4 +48,4 @@ To get a local copy up and running, follow these simple steps.
 
 The portfolio is deployed on Vercel and can be accessed at the following link:
 
-[Portfolio Deployment](https://portfolio-project-seven-rust.vercel.app/)
+[Portfolio Deployment](https://sdet-portfolio-delta.vercel.app/)

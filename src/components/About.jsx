@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaCode, FaRunning, FaWater, FaSnowflake } from 'react-icons/fa';
-
-import SkillCard from './SkillCard-ReactCardFlip';
+import ReactCardFlip from 'react-card-flip';
 
 const About = () => {
+  const [flippedCards, setFlippedCards] = useState({});
+
+  const handleFlip = (index) => {
+    setFlippedCards(prevState => ({
+      ...prevState,
+      [index]: !prevState[index]
+    }));
+  };
   const hobbies = [
     { icon: FaRunning, name: 'Track & Field', color: 'text-blue-400' },
     { icon: FaWater, name: 'Surfing', color: 'text-green-400' },
@@ -165,66 +172,66 @@ const About = () => {
                       className="flex-shrink-0 perspective-1000 skill-card"
                       style={{ width: '400px', height: '533px' }}
                     >
-                      <div className="relative w-full h-full transform-style-preserve-3d transition-transform duration-500 cursor-pointer" 
-                           onClick={(e) => {
-                             const card = e.currentTarget;
-                             card.style.transform = card.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
-                           }}>
+                      <ReactCardFlip isFlipped={flippedCards[index]} flipDirection="horizontal">
                         {/* Front of card */}
-                        <div className="absolute inset-0 backface-hidden flex flex-col items-center justify-center p-4"
-                             style={{
-                               backgroundColor: skill.name === 'Java' ? 'rgba(255, 165, 0, 0.2)' :
-                                              skill.name === 'Python' ? 'rgba(59, 130, 246, 0.2)' :
-                                              skill.name === 'JavaScript' ? 'rgba(251, 191, 36, 0.2)' :
-                                              skill.name === 'HTML' ? 'rgba(239, 68, 68, 0.2)' :
-                                              skill.name === 'CSS' ? 'rgba(147, 51, 234, 0.2)' :
-                                              'rgba(34, 197, 94, 0.2)',
-                               border: `3px solid ${skill.name === 'Java' ? '#f97316' :
-                                            skill.name === 'Python' ? '#3b82f6' :
-                                            skill.name === 'JavaScript' ? '#fbbf24' :
-                                            skill.name === 'HTML' ? '#ef4444' :
-                                            skill.name === 'CSS' ? '#9333ea' :
-                                            '#22c55e'}`,
-                               borderRadius: '24px'
-                             }}>
-                          <div className="text-4xl font-bold mb-4"
-                               style={{
-                                 color: skill.name === 'Java' ? '#f97316' :
-                                        skill.name === 'Python' ? '#3b82f6' :
-                                        skill.name === 'JavaScript' ? '#fbbf24' :
-                                        skill.name === 'HTML' ? '#ef4444' :
-                                        skill.name === 'CSS' ? '#9333ea' :
-                                        '#22c55e'
-                               }}>
-                            {skill.name}
-                          </div>
-                          <div className="text-gray-300 text-lg text-center">
-                            Click to learn more
+                        <div onClick={() => handleFlip(index)} className="relative w-full h-full transform-style-preserve-3d transition-transform duration-500 cursor-pointer">
+                          <div className="absolute inset-0 backface-hidden flex flex-col items-center justify-center p-4"
+                              style={{
+                                backgroundColor: skill.name === 'Java' ? 'rgba(255, 165, 0, 0.2)' :
+                                                skill.name === 'Python' ? 'rgba(59, 130, 246, 0.2)' :
+                                                skill.name === 'JavaScript' ? 'rgba(251, 191, 36, 0.2)' :
+                                                skill.name === 'HTML' ? 'rgba(239, 68, 68, 0.2)' :
+                                                skill.name === 'CSS' ? 'rgba(147, 51, 234, 0.2)' :
+                                                'rgba(34, 197, 94, 0.2)',
+                                border: `3px solid ${skill.name === 'Java' ? '#f97316' :
+                                              skill.name === 'Python' ? '#3b82f6' :
+                                              skill.name === 'JavaScript' ? '#fbbf24' :
+                                              skill.name === 'HTML' ? '#ef4444' :
+                                              skill.name === 'CSS' ? '#9333ea' :
+                                              '#22c55e'}`,
+                                borderRadius: '24px'
+                              }}>
+                            <div className="text-4xl font-bold mb-4"
+                                style={{
+                                  color: skill.name === 'Java' ? '#f97316' :
+                                          skill.name === 'Python' ? '#3b82f6' :
+                                          skill.name === 'JavaScript' ? '#fbbf24' :
+                                          skill.name === 'HTML' ? '#ef4444' :
+                                          skill.name === 'CSS' ? '#9333ea' :
+                                          '#22c55e'
+                                }}>
+                              {skill.name}
+                            </div>
+                            <div className="text-gray-300 text-lg text-center">
+                              Click to learn more
+                            </div>
                           </div>
                         </div>
                         
                         {/* Back of card */}
-                        <div className="absolute inset-0 backface-hidden rotate-y-180 flex items-center justify-center p-4"
-                             style={{
-                               backgroundColor: skill.name === 'Java' ? 'rgba(255, 165, 0, 0.2)' :
-                                              skill.name === 'Python' ? 'rgba(59, 130, 246, 0.2)' :
-                                              skill.name === 'JavaScript' ? 'rgba(251, 191, 36, 0.2)' :
-                                              skill.name === 'HTML' ? 'rgba(239, 68, 68, 0.2)' :
-                                              skill.name === 'CSS' ? 'rgba(147, 51, 234, 0.2)' :
-                                              'rgba(34, 197, 94, 0.2)',
-                               border: `3px solid ${skill.name === 'Java' ? '#f97316' :
-                                            skill.name === 'Python' ? '#3b82f6' :
-                                            skill.name === 'JavaScript' ? '#fbbf24' :
-                                            skill.name === 'HTML' ? '#ef4444' :
-                                            skill.name === 'CSS' ? '#9333ea' :
-                                            '#22c55e'}`,
-                               borderRadius: '24px'
-                             }}>
-                          <p className="text-gray-300 text-lg text-center leading-relaxed">
-                            {skill.description}
-                          </p>
+                        <div onClick={() => handleFlip(index)} className="relative w-full h-full transform-style-preserve-3d transition-transform duration-500 cursor-pointer">
+                          <div className="absolute inset-0 backface-hidden flex items-center justify-center p-4"
+                              style={{
+                                backgroundColor: skill.name === 'Java' ? 'rgba(255, 165, 0, 0.2)' :
+                                                skill.name === 'Python' ? 'rgba(59, 130, 246, 0.2)' :
+                                                skill.name === 'JavaScript' ? 'rgba(251, 191, 36, 0.2)' :
+                                                skill.name === 'HTML' ? 'rgba(239, 68, 68, 0.2)' :
+                                                skill.name === 'CSS' ? 'rgba(147, 51, 234, 0.2)' :
+                                                'rgba(34, 197, 94, 0.2)',
+                                border: `3px solid ${skill.name === 'Java' ? '#f97316' :
+                                              skill.name === 'Python' ? '#3b82f6' :
+                                              skill.name === 'JavaScript' ? '#fbbf24' :
+                                              skill.name === 'HTML' ? '#ef4444' :
+                                              skill.name === 'CSS' ? '#9333ea' :
+                                              '#22c55e'}`,
+                                borderRadius: '24px'
+                              }}>
+                            <p className="text-gray-300 text-lg text-center leading-relaxed">
+                              {skill.description}
+                            </p>
+                          </div>
                         </div>
-                      </div>
+                      </ReactCardFlip>
                     </motion.div>
                   ))}
                 </div>

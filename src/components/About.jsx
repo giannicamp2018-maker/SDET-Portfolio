@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaCode, FaRunning, FaWater, FaSnowflake } from 'react-icons/fa';
 
-import SkillCard from './SkillCard';
+import SkillCard from './SkillCard-ReactCardFlip';
 
 const About = () => {
   const hobbies = [

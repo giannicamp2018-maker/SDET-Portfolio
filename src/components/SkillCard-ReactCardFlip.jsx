@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 
-const SkillCardReactCardFlip = ({ skill, index }) => {
+const SkillCardReactCardFlip = ({ skill }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const getColors = (skillName) => {

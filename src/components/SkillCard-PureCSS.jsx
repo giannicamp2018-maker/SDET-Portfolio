@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SkillCardPureCSS = ({ skill, index }) => {
+const SkillCardPureCSS = ({ skill }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const getColors = (skillName) => {

@@ -19,9 +19,11 @@ const ProjectCard = ({ project, index }) => {
         boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)"
       }}
       onClick={handleFlip}
-        variants={{ front: { scaleX: 1 }, back: { scaleX: -1 } }}
+        variants={{
+        front: { scaleX: 1, transition: { duration: 0.5 } },
+        back: { scaleX: -1, transition: { duration: 0.5 } }
+      }}
       animate={isFlipped ? "back" : "front"}
-      transition={{ duration: 0.5 }}
         
         className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-blue-400/50 transition-all duration-300 group"    >
       {/* Project Image */}

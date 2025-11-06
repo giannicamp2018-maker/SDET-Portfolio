@@ -29,6 +29,13 @@ const Hero = () => {
     }
   };
 
+  const scrollToProjects = () => {
+    const element = document.getElementById('projects');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Animated background particles */}
@@ -88,21 +95,22 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="flex justify-center items-center gap-4"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)" }}
               whileTap={{ scale: 0.95 }}
               onClick={scrollToAbout}
-              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
+              className="holographic-card px-8 py-3 text-2xl text-blue-400 font-semibold border-none outline-none"
+              style={{ backgroundColor: 'transparent', background: 'none' }}
             >
               Learn More About Me
             </motion.button>
             
             <motion.button
-              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white font-semibold rounded-lg transition-all duration-300"
+              onClick={scrollToProjects}
+              className="holographic-card px-8 py-3 text-2xl text-blue-400 font-semibold border-none outline-none"
+              style={{ backgroundColor: 'transparent', background: 'none' }}
             >
               View My Projects
             </motion.button>

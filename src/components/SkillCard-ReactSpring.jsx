@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 
-const SkillCardReactSpring = ({ skill }) => {
+const SkillCardReactSpring = ({ skill, index }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const { transform, opacity } = useSpring({

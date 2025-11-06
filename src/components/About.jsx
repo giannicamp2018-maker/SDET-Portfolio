@@ -65,8 +65,8 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-900 overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+    <section id="about" className="py-20 bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -154,10 +154,10 @@ const About = () => {
             </div>
 
             {/* Skills */}
-            <div className="w-full">
+            <div>
               <h3 className="text-2xl font-bold text-white mb-6">Technical Skills</h3>
-              <div className="relative w-full max-w-full">
-                <div className="flex overflow-x-auto gap-4 pb-4 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', width: '100%', maxWidth: '100%' }}>
+              <div className="relative">
+                <div className="flex overflow-x-auto gap-4 pb-4 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                   {skills.map((skill, index) => (
                     <motion.div
                       key={skill.name}

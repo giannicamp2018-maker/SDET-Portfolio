@@ -53,7 +53,7 @@ const NavItem = ({ item, activeSection, scrollToSection, index, navItemsLength }
         }}
         transition={{ 
           type: 'tween',
-          duration: 0.4, 
+          duration: 0.2, 
           ease: [0.4, 0, 0.2, 1]
         }}
       />

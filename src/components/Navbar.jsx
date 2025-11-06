@@ -1,6 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+const NavItem = ({ item, activeSection, scrollToSection, index, navItemsLength }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.button
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      whileTap={{ scale: 0.95 }}
+      onClick={() => scrollToSection(item.id)}
+      className={`text-xl font-normal transition-colors duration-200 relative ${
+        activeSection === item.id
+          ? 'text-white'
+          : 'text-gray-300 hover:text-white'
+      }`}
+      style={{ 
+        backgroundColor: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        padding: 0,
+        paddingBottom: '6px',
+        color: activeSection === item.id ? '#ffffff' : '#d1d5db',
+        fontSize: '1.25rem',
+        marginRight: index < navItemsLength - 1 ? '1.5rem' : 0,
+        fontFamily: "'Ubuntu', sans-serif",
+        overflow: 'visible'
+      }}
+      animate={{
+        scale: isHovered ? 1.05 : 1
+      }}
+      transition={{ duration: 0.2 }}
+    >
+      {item.label}
+      <motion.div
+        style={{ 
+          position: 'absolute',
+          bottom: 0,
+          left: '50%',
+          height: '2px',
+          width: '100%',
+          backgroundColor: '#ffffff',
+          transformOrigin: 'center',
+          willChange: 'transform',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden'
+        }}
+        initial={{ scaleX: 0, x: '-50%' }}
+        animate={{
+          scaleX: isHovered ? 1 : 0,
+          x: '-50%'
+        }}
+        transition={{ 
+          type: 'tween',
+          duration: 0.4, 
+          ease: [0.4, 0, 0.2, 1]
+        }}
+      />
+    </motion.button>
+  );
+};
+
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,32 +114,19 @@ const Navbar = () => {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold text-white cursor-pointer"
-            onClick={() => scrollToSection('home')}
-          >
-            Portfolio
-          </motion.div>
-          
+      <div style={{ paddingLeft: '1.5rem' }}>
+        <div className="flex items-center h-16">
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <motion.button
+            <div className="flex items-center" style={{ gap: '1.5rem' }}>
+              {navItems.map((item, index) => (
+                <NavItem
                   key={item.id}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
-                    activeSection === item.id
-                      ? 'text-blue-400 bg-blue-400/10'
-                      : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
-                  }`}
-                >
-                  {item.label}
-                </motion.button>
+                  item={item}
+                  activeSection={activeSection}
+                  scrollToSection={scrollToSection}
+                  index={index}
+                  navItemsLength={navItems.length}
+                />
               ))}
             </div>
           </div>

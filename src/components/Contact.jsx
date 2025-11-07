@@ -37,9 +37,9 @@ const Contact = () => {
     {
       icon: FaGithub,
       label: 'GitHub',
-      value: 'github.com/gfc6-dotcom',
-      link: 'https://github.com/gfc6-dotcom',
-      color: 'text-gray-400'
+      value: 'github.com/giannicamp2018-maker',
+      link: 'https://github.com/giannicamp2018-maker',
+      color: 'text-blue-400'
     }
   ];
 
@@ -182,6 +182,7 @@ const Contact = () => {
                       backgroundColor: 'rgba(59, 130, 246, 0.1)'
                     }}
                     className="flex items-center space-x-4 p-4 bg-gray-800/50 backdrop-blur-sm rounded-lg hover:bg-gray-800/70 transition-all duration-300 group"
+                    style={{ textDecoration: 'none', color: 'inherit' }}
                   >
                     <motion.div
                       whileHover={{ scale: 1.2, rotate: 5 }}

@@ -6,7 +6,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: FaGithub, href: 'https://github.com/gfc6-dotcom', label: 'GitHub' },
+    { icon: FaGithub, href: 'https://github.com/giannicamp2018-maker', label: 'GitHub' },
     { icon: FaLinkedin, href: 'https://www.linkedin.com/in/gianni-campione-7013a7385/', label: 'LinkedIn' },
     { icon: FaEnvelope, href: 'mailto:giannicamp2018@gmail.com', label: 'Email' }
   ];
@@ -53,7 +53,8 @@ const Footer = () => {
                   color: '#3b82f6'
                 }}
                 whileTap={{ scale: 0.9 }}
-                className="text-gray-400 hover:text-blue-400 transition-all duration-300"
+                className="text-blue-400 hover:text-blue-300 transition-all duration-300"
+                style={{ color: '#60a5fa' }}
                 aria-label={social.label}
               >
                 <social.icon className="w-6 h-6" />

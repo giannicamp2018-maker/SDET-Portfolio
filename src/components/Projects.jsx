@@ -7,11 +7,11 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce application with user authentication, payment processing, and admin dashboard. Built with modern web technologies.',
-      techStack: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Express'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
+      title: 'Portfolio Website',
+      description: 'A portfolio website built with React and Vite, showcasing my skills and projects as a Software Development Engineer in Test (SDET).',
+      techStack: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion', 'React Icons'],
+      github: 'https://github.com/giannicamp2018-maker/SDET-Portfolio',
+      demo: 'https://sdet-portfolio-delta.vercel.app/',
       category: 'fullstack'
     },
     {

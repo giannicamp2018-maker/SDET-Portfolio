@@ -39,7 +39,7 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Animated background particles */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0" style={{ zIndex: 0, pointerEvents: 'none' }}>
         {[...Array(50)].map((_, i) => (
           <motion.div
             key={i}
@@ -115,22 +115,27 @@ const Hero = () => {
               View My Projects
             </motion.button>
           </motion.div>
-        </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
+          {/* Scroll indicator */}
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            onClick={scrollToAbout}
-            className="cursor-pointer text-gray-400 hover:text-white transition-colors duration-300"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 2 }}
+            style={{
+              marginTop: '3rem',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
           >
-            <FaChevronDown className="w-6 h-6" />
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              onClick={scrollToAbout}
+              className="cursor-pointer text-gray-400 hover:text-white transition-colors duration-300"
+            >
+              <FaChevronDown className="w-6 h-6" />
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

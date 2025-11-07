@@ -2,62 +2,64 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const NavItem = ({ item, activeSection, scrollToSection, index, navItemsLength }) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const isActive = activeSection === item.id;
+  const [isHovered, setIsHovered] = React.useState(false);
 
   return (
-    <motion.button
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      whileTap={{ scale: 0.95 }}
-      onClick={() => scrollToSection(item.id)}
-      className={`text-xl font-normal transition-colors duration-200 relative ${
-        activeSection === item.id
-          ? 'text-white'
-          : 'text-gray-300 hover:text-white'
-      }`}
-      style={{ 
-        backgroundColor: 'transparent',
-        border: 'none',
-        cursor: 'pointer',
-        padding: 0,
-        paddingBottom: '6px',
-        color: activeSection === item.id ? '#ffffff' : '#d1d5db',
-        fontSize: '1.25rem',
+    <motion.div
+      className="relative"
+      style={{
         marginRight: index < navItemsLength - 1 ? '1.5rem' : 0,
-        fontFamily: "'Ubuntu', sans-serif",
-        overflow: 'visible'
       }}
-      animate={{
-        scale: isHovered ? 1.05 : 1
-      }}
-      transition={{ duration: 0.2 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {item.label}
-      <motion.div
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => scrollToSection(item.id)}
+        className={`text-xl font-normal transition-colors duration-200 relative ${
+          isActive || isHovered
+            ? 'text-white'
+            : 'text-gray-300'
+        }`}
         style={{ 
-          position: 'absolute',
-          bottom: 0,
-          left: '50%',
-          height: '2px',
-          width: '100%',
-          backgroundColor: '#ffffff',
-          transformOrigin: 'center',
-          willChange: 'transform',
-          backfaceVisibility: 'hidden',
-          WebkitBackfaceVisibility: 'hidden'
+          backgroundColor: 'transparent',
+          border: 'none',
+          cursor: 'pointer',
+          padding: 0,
+          paddingBottom: '8px',
+          color: (isActive || isHovered) ? '#ffffff' : '#d1d5db',
+          fontSize: '1.25rem',
+          fontFamily: "'Ubuntu', sans-serif",
+          position: 'relative',
+          display: 'inline-block'
         }}
-        initial={{ scaleX: 0, x: '-50%' }}
-        animate={{
-          scaleX: isHovered ? 1 : 0,
-          x: '-50%'
-        }}
-        transition={{ 
-          type: 'tween',
-          duration: 0.2, 
-          ease: [0.4, 0, 0.2, 1]
-        }}
-      />
-    </motion.button>
+      >
+        {item.label}
+        <motion.div
+          style={{ 
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            height: '2px',
+            width: '100%',
+            backgroundColor: '#ffffff',
+            transformOrigin: 'center center',
+            pointerEvents: 'none',
+          }}
+          initial={false}
+          animate={{
+            scaleX: (isActive || isHovered) ? 1 : 0
+          }}
+          transition={{ 
+            type: 'tween',
+            duration: 0.3,
+            ease: 'easeInOut'
+          }}
+        />
+      </motion.button>
+    </motion.div>
   );
 };
 
@@ -113,6 +115,10 @@ const Navbar = () => {
           ? 'bg-black/80 backdrop-blur-md border-b border-gray-800' 
           : 'bg-transparent'
       }`}
+      style={{ 
+        zIndex: 50,
+        pointerEvents: 'auto'
+      }}
     >
       <div style={{ paddingLeft: '1.5rem' }}>
         <div className="flex items-center h-16">

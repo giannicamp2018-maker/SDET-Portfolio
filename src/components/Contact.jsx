@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaLinkedin, FaGithub, FaTwitter, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init('oltCW2r0Grsghsx7c');
+  }, []);
+
   const contactInfo = [
     {
       icon: FaEnvelope,
@@ -27,10 +43,96 @@ const Contact = () => {
     }
   ];
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted');
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
+
+    try {
+      // EmailJS configuration
+      // Replace these with your EmailJS credentials from https://www.emailjs.com/
+      const serviceId = 'service_dgteu8r';
+      const templateId = 'template_k6ldoyt'; // Replace with your template ID
+      const publicKey = 'oltCW2r0Grsghsx7c'; // Replace with your public key
+      
+      // Check if EmailJS is properly configured
+      if (templateId === 'YOUR_TEMPLATE_ID' || publicKey === 'YOUR_PUBLIC_KEY') {
+        // Fallback to mailto link if EmailJS is not configured
+        const mailtoLink = `mailto:giannicamp2018@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`From: ${formData.firstName} ${formData.lastName} (${formData.email})\n\n${formData.message}`)}`;
+        window.location.href = mailtoLink;
+        setSubmitStatus({ 
+          type: 'success', 
+          message: 'Opening your email client... (EmailJS not configured yet)' 
+        });
+      } else {
+        // Send email to you (the portfolio owner)
+        const templateParams = {
+          from_name: `${formData.firstName} ${formData.lastName}`,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'giannicamp2018@gmail.com'
+        };
+        
+        console.log('Sending email with params:', templateParams);
+        
+        const response = await emailjs.send(
+          serviceId,
+          templateId,
+          templateParams,
+          publicKey
+        );
+        
+        console.log('EmailJS response:', response);
+
+        // OPTIONAL: Send auto-reply confirmation to the sender
+        // Uncomment the code below and create a second EmailJS template for auto-reply
+        /*
+        const autoReplyTemplateId = 'YOUR_AUTO_REPLY_TEMPLATE_ID';
+        await emailjs.send(
+          serviceId,
+          autoReplyTemplateId,
+          {
+            to_name: `${formData.firstName} ${formData.lastName}`,
+            to_email: formData.email,
+            reply_subject: formData.subject
+          },
+          publicKey
+        );
+        */
+
+        setSubmitStatus({ 
+          type: 'success', 
+          message: 'Message sent successfully! I\'ll get back to you soon.' 
+        });
+      }
+      
+      // Reset form after a delay
+      setTimeout(() => {
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+        setSubmitStatus({ type: '', message: '' });
+      }, 2000);
+    } catch (error) {
+      setSubmitStatus({ 
+        type: 'error', 
+        message: 'Failed to send message. Please try again or email directly at giannicamp2018@gmail.com' 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -131,8 +233,12 @@ const Contact = () => {
                   <label className="text-gray-300 text-sm font-medium">First Name</label>
                   <input
                     type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 bg-gray-600 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                    style={{ color: '#ffffff', backgroundColor: '#4b5563' }}
                     placeholder="Your first name"
                   />
                 </motion.div>
@@ -143,8 +249,12 @@ const Contact = () => {
                   <label className="text-gray-300 text-sm font-medium">Last Name</label>
                   <input
                     type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 bg-gray-600 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                    style={{ color: '#ffffff', backgroundColor: '#4b5563' }}
                     placeholder="Your last name"
                   />
                 </motion.div>
@@ -157,9 +267,13 @@ const Contact = () => {
                 <label className="text-gray-300 text-sm font-medium">Email</label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
-                  placeholder="giannicamp2018@gmail.com"
+                  className="w-full px-4 py-3 bg-gray-600 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                  style={{ color: '#ffffff', backgroundColor: '#4b5563' }}
+                  placeholder="your.email@example.com"
                 />
               </motion.div>
 
@@ -170,8 +284,12 @@ const Contact = () => {
                 <label className="text-gray-300 text-sm font-medium">Subject</label>
                 <input
                   type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                  className="w-full px-4 py-3 bg-gray-600 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                  style={{ color: '#ffffff', backgroundColor: '#4b5563' }}
                   placeholder="What's this about?"
                 />
               </motion.div>
@@ -182,20 +300,36 @@ const Contact = () => {
               >
                 <label className="text-gray-300 text-sm font-medium">Message</label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-gray-600 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300 resize-none"
+                  style={{ color: '#ffffff', backgroundColor: '#4b5563' }}
                   placeholder="Tell me about your project or just say hello!"
                 />
               </motion.div>
 
+              {submitStatus.message && (
+                <div className={`p-4 rounded-lg ${
+                  submitStatus.type === 'success' 
+                    ? 'bg-green-500/20 text-green-400 border border-green-500/50' 
+                    : 'bg-red-500/20 text-red-400 border border-red-500/50'
+                }`}>
+                  {submitStatus.message}
+                </div>
+              )}
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)" }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
+                disabled={isSubmitting}
+                whileHover={!isSubmitting ? { scale: 1.05, boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)" } : {}}
+                whileTap={!isSubmitting ? { scale: 0.95 } : {}}
+                className={`w-full px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 ${
+                  isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </motion.button>
             </form>
           </motion.div>

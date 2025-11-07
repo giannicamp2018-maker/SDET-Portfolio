@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 
 const Projects = () => {
-  const [filter, setFilter] = useState('all');
 
   const projects = [
     {
@@ -62,17 +61,6 @@ const Projects = () => {
     }
   ];
 
-  const categories = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'frontend', label: 'Frontend' },
-    { id: 'backend', label: 'Backend' },
-    { id: 'fullstack', label: 'Full Stack' },
-    { id: 'mobile', label: 'Mobile' }
-  ];
-
-  const filteredProjects = filter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === filter);
 
   return (
     <section id="projects" className="py-20 bg-transparent">
@@ -87,29 +75,10 @@ const Projects = () => {
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             My <span className="text-blue-400">Projects</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             A showcase of my recent work and personal projects. Each project represents 
             a learning journey and demonstrates my skills in different technologies.
           </p>
-
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
-              <motion.button
-                key={category.id}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setFilter(category.id)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filter === category.id
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
-                }`}
-              >
-                {category.label}
-              </motion.button>
-            ))}
-          </div>
         </motion.div>
 
         {/* Projects Grid */}
@@ -117,7 +86,7 @@ const Projects = () => {
           layout
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {filteredProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}

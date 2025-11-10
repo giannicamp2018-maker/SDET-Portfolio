@@ -177,28 +177,16 @@ const About = () => {
                         <div onClick={() => handleFlip(index)} className="relative w-full h-full transform-style-preserve-3d transition-transform duration-500 cursor-pointer">
                           <div className="absolute inset-0 backface-hidden flex flex-col items-center justify-center p-4"
                               style={{
-                                backgroundColor: skill.name === 'Java' ? 'rgba(255, 165, 0, 0.2)' :
-                                                skill.name === 'Python' ? 'rgba(59, 130, 246, 0.2)' :
-                                                skill.name === 'JavaScript' ? 'rgba(251, 191, 36, 0.2)' :
-                                                skill.name === 'HTML' ? 'rgba(239, 68, 68, 0.2)' :
-                                                skill.name === 'CSS' ? 'rgba(147, 51, 234, 0.2)' :
-                                                'rgba(34, 197, 94, 0.2)',
-                                border: `3px solid ${skill.name === 'Java' ? '#f97316' :
-                                              skill.name === 'Python' ? '#3b82f6' :
-                                              skill.name === 'JavaScript' ? '#fbbf24' :
-                                              skill.name === 'HTML' ? '#ef4444' :
-                                              skill.name === 'CSS' ? '#9333ea' :
-                                              '#22c55e'}`,
-                                borderRadius: '24px'
+                                background: 'rgba(62, 44, 44, 0.2)',
+                                borderRadius: '16px',
+                                boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                                backdropFilter: 'blur(5px)',
+                                WebkitBackdropFilter: 'blur(5px)',
+                                border: '1px solid rgba(62, 44, 44, 0.3)'
                               }}>
                             <div className="text-4xl font-bold mb-4"
                                 style={{
-                                  color: skill.name === 'Java' ? '#f97316' :
-                                          skill.name === 'Python' ? '#3b82f6' :
-                                          skill.name === 'JavaScript' ? '#fbbf24' :
-                                          skill.name === 'HTML' ? '#ef4444' :
-                                          skill.name === 'CSS' ? '#9333ea' :
-                                          '#22c55e'
+                                  color: '#ffffff'
                                 }}>
                               {skill.name}
                             </div>
@@ -212,19 +200,12 @@ const About = () => {
                         <div onClick={() => handleFlip(index)} className="relative w-full h-full transform-style-preserve-3d transition-transform duration-500 cursor-pointer">
                           <div className="absolute inset-0 backface-hidden flex items-center justify-center p-4"
                               style={{
-                                backgroundColor: skill.name === 'Java' ? 'rgba(255, 165, 0, 0.2)' :
-                                                skill.name === 'Python' ? 'rgba(59, 130, 246, 0.2)' :
-                                                skill.name === 'JavaScript' ? 'rgba(251, 191, 36, 0.2)' :
-                                                skill.name === 'HTML' ? 'rgba(239, 68, 68, 0.2)' :
-                                                skill.name === 'CSS' ? 'rgba(147, 51, 234, 0.2)' :
-                                                'rgba(34, 197, 94, 0.2)',
-                                border: `3px solid ${skill.name === 'Java' ? '#f97316' :
-                                              skill.name === 'Python' ? '#3b82f6' :
-                                              skill.name === 'JavaScript' ? '#fbbf24' :
-                                              skill.name === 'HTML' ? '#ef4444' :
-                                              skill.name === 'CSS' ? '#9333ea' :
-                                              '#22c55e'}`,
-                                borderRadius: '24px'
+                                background: 'rgba(62, 44, 44, 0.2)',
+                                borderRadius: '16px',
+                                boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                                backdropFilter: 'blur(5px)',
+                                WebkitBackdropFilter: 'blur(5px)',
+                                border: '1px solid rgba(62, 44, 44, 0.3)'
                               }}>
                             <p className="text-gray-300 text-lg text-center leading-relaxed">
                               {skill.description}

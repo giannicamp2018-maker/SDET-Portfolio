@@ -14,7 +14,7 @@ const ProjectCard = ({ project, index }) => {
       }}
       className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-blue-400/50 transition-all duration-300 group">
       {/* Project Image */}
-      <div className="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden">
+      <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
         <div className="absolute inset-0 flex items-center justify-center">
           <FaCode className="text-white text-6xl opacity-50" />

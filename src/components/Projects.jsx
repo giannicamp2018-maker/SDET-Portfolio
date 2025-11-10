@@ -107,7 +107,7 @@ const Projects = () => {
             Interested in seeing more of my work?
           </p>
           <motion.a
-            href="https://github.com/gfc6-dotcom"
+            href="https://github.com/giannicamp2018-maker"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)" }}

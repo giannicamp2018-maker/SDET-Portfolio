@@ -559,3 +559,16 @@ a[href*="linkedin"]:visited,
 a[href*="mailto"]:visited {
   color: #60a5fa !important;
 }
+
+/* Contact card hover effects */
+.group:hover .group-hover-arrow {
+  opacity: 1 !important;
+}
+
+.group:hover .group-hover-text {
+  color: #60a5fa !important;
+}
+
+.group:hover .group-hover-icon {
+  transform: scale(1.1);
+}

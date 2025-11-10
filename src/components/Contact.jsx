@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaLinkedin, FaGithub, FaTwitter, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -161,11 +161,11 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6"
           >
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-              <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-white mb-8">Contact Information</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {contactInfo.map((contact, index) => (
                   <motion.a
                     key={contact.label}
@@ -178,42 +178,93 @@ const Contact = () => {
                     viewport={{ once: true }}
                     whileHover={{ 
                       scale: 1.02,
-                      x: 10,
-                      backgroundColor: 'rgba(59, 130, 246, 0.1)'
+                      y: -4
                     }}
-                    className="flex items-center space-x-4 p-4 bg-gray-800/50 backdrop-blur-sm rounded-lg hover:bg-gray-800/70 transition-all duration-300 group"
-                    style={{ textDecoration: 'none', color: 'inherit' }}
+                    className="group"
+                    style={{ 
+                      textDecoration: 'none',
+                      display: 'block',
+                      width: '100%',
+                      backgroundColor: '#1f2937',
+                      borderRadius: '1rem',
+                      padding: '1.25rem',
+                      border: '2px solid #374151',
+                      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = '#60a5fa';
+                      e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.5)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = '#374151';
+                      e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.3)';
+                    }}
                   >
-                    <motion.div
-                      whileHover={{ scale: 1.2, rotate: 5 }}
-                      className={`p-3 bg-gray-700 rounded-lg ${contact.color} group-hover:bg-gray-600 transition-all duration-300`}
-                    >
-                      <contact.icon className="w-6 h-6" />
-                    </motion.div>
-                    <div>
-                      <p className="text-gray-400 text-sm">{contact.label}</p>
-                      <p className="text-white font-medium">{contact.value}</p>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                      <div 
+                        style={{ 
+                          flexShrink: 0,
+                          width: '56px',
+                          height: '56px',
+                          borderRadius: '0.75rem',
+                          backgroundColor: '#374151',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+                          transition: 'transform 0.3s ease'
+                        }}
+                        className="group-hover-icon"
+                      >
+                        <contact.icon 
+                          className={contact.color} 
+                          style={{ width: '24px', height: '24px' }} 
+                        />
+                      </div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ 
+                          color: '#9ca3af',
+                          fontSize: '0.75rem',
+                          fontWeight: 600,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em',
+                          marginBottom: '0.25rem'
+                        }}>
+                          {contact.label}
+                        </div>
+                        <div style={{ 
+                          color: '#ffffff',
+                          fontSize: '1rem',
+                          fontWeight: 500,
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap'
+                        }}
+                        className="group-hover-text"
+                        >
+                          {contact.value}
+                        </div>
+                      </div>
+                      <div 
+                        style={{ 
+                          flexShrink: 0,
+                          color: '#60a5fa',
+                          opacity: 0,
+                          transition: 'opacity 0.3s ease'
+                        }}
+                        className="group-hover-arrow"
+                      >
+                        <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
                     </div>
                   </motion.a>
                 ))}
               </div>
             </div>
-
-            {/* Location */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6"
-            >
-              <div className="flex items-center space-x-4 mb-4">
-                <FaMapMarkerAlt className="text-blue-400 text-xl" />
-                <h4 className="text-white font-semibold">Location</h4>
-              </div>
-              <p className="text-gray-300">Brick Township, NJ</p>
-              <p className="text-gray-400 text-sm mt-1">Available for remote work</p>
-            </motion.div>
           </motion.div>
 
           {/* Contact Form */}

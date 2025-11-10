@@ -23,7 +23,7 @@ const Projects = () => {
       demo: 'https://demo.com',
       category: 'frontend'
     },
-    {
+    /*{
       id: 3,
       title: 'Weather Dashboard',
       description: 'A responsive weather application that provides current weather conditions, forecasts, and location-based weather data.',
@@ -58,7 +58,7 @@ const Projects = () => {
       github: 'https://github.com',
       demo: 'https://demo.com',
       category: 'mobile'
-    }
+    }*/
   ];
 
 
@@ -84,7 +84,7 @@ const Projects = () => {
         {/* Projects Grid */}
         <motion.div
           layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-12"
         >
           {projects.map((project, index) => (
             <ProjectCard

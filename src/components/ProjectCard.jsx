@@ -20,7 +20,7 @@ const ProjectCard = ({ project, index }) => {
           <FaCode className="text-white text-6xl opacity-50" />
         </div>
         <motion.div
-          className="absolute top-4 right-4 flex space-x-2"
+          className="absolute top-4 left-1/2 -translate-x-1/2 flex space-x-2"
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
@@ -59,7 +59,7 @@ const ProjectCard = ({ project, index }) => {
         </p>
 
         {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4 justify-center">
           {project.techStack.map((tech, techIndex) => (
             <motion.span
               key={tech}
@@ -75,14 +75,14 @@ const ProjectCard = ({ project, index }) => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex space-x-3">
+        <div className="flex space-x-3 justify-center">
           <motion.a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-all duration-300 text-sm font-medium"
+            className="flex items-center justify-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-all duration-300 text-sm font-medium"
           >
             <FaGithub className="w-4 h-4" />
             <span>Code</span>
@@ -94,7 +94,7 @@ const ProjectCard = ({ project, index }) => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300 text-sm font-medium"
+            className="flex items-center justify-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300 text-sm font-medium"
           >
             <FaExternalLinkAlt className="w-4 h-4" />
             <span>Live Demo</span>
